@@ -9,7 +9,8 @@ def convert_to_seconds(s: Union[str,int], unit_table={"s":1, "m": 60, "h":3600, 
         return s
     if isinstance(s, str) and s.isnumeric():
         return int(s)
-    
+    if isinstance(s, str):
+        s = s.lower()
     return int(s[:-1]) * unit_table[s[-1]]
 
 

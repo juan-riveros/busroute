@@ -16,7 +16,7 @@ def start_logger(config: Config) -> logging.Logger:
         log_fp = log_dir / f"{__projectname__}.log"
         fh = TimedRotatingFileHandler(
             log_fp,
-            interval=config.LogFile.LogInterval, #type: ignore
+            interval=convert_to_seconds(config.LogFile.LogInterval), #type: ignore
             backupCount=config.LogFile.BackupCount
         )
         fh.setLevel(logging.getLevelName(config.LogFile.LogLevel.value))
